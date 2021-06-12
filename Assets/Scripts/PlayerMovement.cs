@@ -1,28 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //ãƒ‰ãƒ©ãƒƒã‚°ç§»å‹•
     void OnMouseDrag()
     {
-        //Cube‚ÌˆÊ’u‚ğƒ[ƒ‹ƒhÀ•W‚©‚çƒXƒNƒŠ[ƒ“À•W‚É•ÏŠ·‚µ‚ÄAobjectPoint‚ÉŠi”[
-        Vector3 objectPoint
-            = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 objectPoint = Camera.main.WorldToScreenPoint(transform.position);
 
-        //Cube‚ÌŒ»İˆÊ’u(ƒ}ƒEƒXˆÊ’u)‚ğApointScreen‚ÉŠi”[
-        Vector3 pointScreen
-            = new Vector3(Input.mousePosition.x,
-                          Input.mousePosition.y,
-                          objectPoint.z);
+        Vector3 pointScreen = new Vector3(Input.mousePosition.x, Input.mousePosition.y, objectPoint.z);
 
-        //Cube‚ÌŒ»İˆÊ’u‚ğAƒXƒNƒŠ[ƒ“À•W‚©‚çƒ[ƒ‹ƒhÀ•W‚É•ÏŠ·‚µ‚ÄApointWorld‚ÉŠi”[
         Vector3 pointWorld = Camera.main.ScreenToWorldPoint(pointScreen);
         pointWorld.z = transform.position.z;
 
-        //Cube‚ÌˆÊ’u‚ğApointWorld‚É‚·‚é
         transform.position = pointWorld;
     }
-    
+
+    //æ¶ˆæ»…ï¼†ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
+
+    }
 
 }
