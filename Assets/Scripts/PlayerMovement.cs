@@ -2,6 +2,11 @@
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private GameObject wintex;
+    [SerializeField] private GameObject deftex;
+    [SerializeField] private GameObject delete01;
+    [SerializeField] private GameObject delete02;
+
     //ドラッグ移動
     void OnMouseDrag()
     {
@@ -15,12 +20,23 @@ public class PlayerMovement : MonoBehaviour
         transform.position = pointWorld;
     }
 
-    //消滅＆ゲームオーバー
+    //消滅＆ゲームオーバーまたはクリア
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Wall")
         {
             Destroy(gameObject);
+            Destroy(delete01);
+            Destroy(delete02);
+            deftex.SetActive(true);
+        }
+
+        if (collision.gameObject.tag == "Clear")
+        {
+            Destroy(gameObject);
+            Destroy(delete01);
+            Destroy(delete02);
+            wintex.SetActive(true);
         }
 
     }
