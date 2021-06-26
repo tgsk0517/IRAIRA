@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Clear
+  - MoveMap
   layers:
   - Default
   - TransparentFX

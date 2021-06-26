@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject delete01;
     [SerializeField] private GameObject delete02;
     [SerializeField] private GameObject Explode;
+    private GameObject mpobj;
 
     //ドラッグ移動
     void OnMouseDrag()
@@ -30,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
             Destroy(delete01);
             Destroy(delete02);
+            mpobj = GameObject.FindGameObjectWithTag("MoveMap");
+            Destroy(mpobj);
             deftex.SetActive(true);
         }
 
@@ -38,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
             Destroy(delete01);
             Destroy(delete02);
+            mpobj = GameObject.FindGameObjectWithTag("MoveMap");
+            Destroy(mpobj);
             wintex.SetActive(true);
         }
 
