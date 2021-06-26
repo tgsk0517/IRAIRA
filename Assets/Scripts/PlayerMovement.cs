@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject deftex;
     [SerializeField] private GameObject delete01;
     [SerializeField] private GameObject delete02;
+    [SerializeField] private GameObject Explode;
 
     //ドラッグ移動
     void OnMouseDrag()
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Wall")
         {
+            Instantiate(Explode,this.transform.position, Quaternion.identity);
             Destroy(gameObject);
             Destroy(delete01);
             Destroy(delete02);
